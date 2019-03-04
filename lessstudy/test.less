@@ -1,0 +1,74 @@
+@charset "utf-8";
+//变量
+//必须以@符号开头
+//不能以数字开头
+//不能包含特殊字符
+@maincolor:#fff;
+body{
+  color:@maincolor;
+}
+
+//Mixin混入
+//1.样式类名
+//.f_l{
+//  float:left;
+//}
+//.f_r{
+//  float:right;
+//}
+//.b_l{
+//  border-left:1px solid #ccc;
+//}
+//.b_r{
+//  border-right:1px solid #ccc;
+//}
+//.fl_bl{
+//  .f_l();
+//  .b_l();
+//}
+//2.函数Mixin
+.f_l(){
+  float: left;
+}
+.b_l(){
+  border-left: 1px solid #ccc;
+}
+.fl_bl{
+  .f_l();
+  .b_l();
+}
+
+//函数传参
+.border(@direction:left){
+  border-@{direction}:1px solid #ccc;
+}
+.borderRadius(@width:10px){
+  border-radius: @width;
+}
+.fl_bl{
+  .f_l();
+  .border(top);
+  .borderRadius(200px);
+}
+
+
+//嵌套
+.wjs_parter{
+  padding:30px 0;
+  ul{
+    list-style: none;
+    text-align: center;
+    padding:0;
+    li{
+      display: inline-block;
+      a{
+        display: block;
+        margin: 0 15px;
+        //连接符
+        &:hover{
+          color:#e92322;
+        }
+      }
+    }
+  }
+}
